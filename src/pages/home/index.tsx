@@ -1,78 +1,77 @@
-import { FiImage } from "react-icons/fi";
+import PostBox from "components/posts/PostBox";
+import PostForm from "components/posts/PostForm";
 
-export interface PostProps{
-    id:string;
-    email:string;
-    content:string;
-    createAt:string;
-    uid:string;
+export interface PostProps {
+  id: string;
+  email: string;
+  content: string;
+  createdAt: string;
+  uid: string;
+  profileUrl?: string;
+  likes?: string[];
+  likeCount?: number;
+  comments?: any;
 }
 
-const posts: PostProps[]=[
-    {
-        id:"1",
-        email:"test@test.com",
-        content:"내용",
-        createAt:"2025-02-25",
-        uid:"123123"
-    },
-    {
-        id:"2",
-        email:"test@test.com",
-        content:"내용",
-        createAt:"2025-02-25",
-        uid:"123123"
-    },
-    {
-        id:"3",
-        email:"test@test.com",
-        content:"내용",
-        createAt:"2025-02-25",
-        uid:"123123"
-    },
-    {
-        id:"4",
-        email:"test@test.com",
-        content:"내용",
-        createAt:"2025-02-25",
-        uid:"123123"
-    },
-    {
-        id:"5",
-        email:"test@test.com",
-        content:"내용",
-        createAt:"2025-02-25",
-        uid:"123123"
-    },
-    {
-        id:"6",
-        email:"test@test.com",
-        content:"내용",
-        createAt:"2025-02-25",
-        uid:"123123"
-    },
-]
+const posts: PostProps[] = [
+  {
+    id: "1",
+    email: "test@test.com",
+    content: "내용입니다",
+    createdAt: "2023-08-30",
+    uid: "123123",
+  },
+  {
+    id: "2",
+    email: "test@test.com",
+    content: "내용입니다",
+    createdAt: "2023-08-30",
+    uid: "123123",
+  },
+  {
+    id: "3",
+    email: "test@test.com",
+    content: "내용입니다",
+    createdAt: "2023-08-30",
+    uid: "123123",
+  },
+  {
+    id: "4",
+    email: "test@test.com",
+    content: "내용입니다",
+    createdAt: "2023-08-30",
+    uid: "123123",
+  },
+  {
+    id: "5",
+    email: "test@test.com",
+    content: "내용입니다",
+    createdAt: "2023-08-30",
+    uid: "123123",
+  },
+  {
+    id: "6",
+    email: "test@test.com",
+    content: "내용입니다",
+    createdAt: "2023-08-30",
+    uid: "123123",
+  },
+];
 
-export default function HomePage(){
-    const handleFileUpload =()=>{
-
-    }
-    return (
-        <div className="home">
-            <div className="home_title">Home</div>
-            <div className="home_tabs">
-                <div className="home_tab home_tab--active">For you</div>
-                <div className="home_tab ">Following</div>
-            </div>
-            <form className="post-form">
-                <textarea className="post-form_textarea" required name="content" id="content" placeholder="enter everything"/>
-                <div className="post-form_submit-area">
-                <label htmlFor="file-input" className="post-form_file">
-                    <FiImage className="post-form_file-icon" />
-                </label>
-                    <input type="file" name="file-input" accept="image/*" onChange={handleFileUpload}></input>
-                </div>
-            </form>
-        </div>
-    )
+export default function HomePage() {
+  return (
+    <div className="home">
+      <div className="home__title">Home</div>
+      <div className="home__tabs">
+        <div className="home__tab home__tab--active">For You</div>
+        <div className="home__tab">Following</div>
+      </div>
+      <PostForm />
+      <div className="post">
+        {posts?.map((post) => (
+          <PostBox post={post} key={post.id} />
+        ))}
+      </div>
+    </div>
+  );
 }
